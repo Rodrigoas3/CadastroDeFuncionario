@@ -4,10 +4,11 @@ Projeto de cadastro de funcionario pitang.
 
 <html>
 <head>
-<title>GRUPO</title>
+
 </head>
 
 <body>
+  <h1>GRUPO</h1>
 <ol>
 <li>Gustavo Bello</li>
 <li>Emanuel marcos do nascimento</li>
