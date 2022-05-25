@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='css/login.css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Redefinir senha</title>
+
+</head>
+
+<body>
+
+
+    <div class="d-flex justify-content-center align-items-center container">
+        <div class="card py-5 px-3">
+            <h5 class="m-0">Encontre sua conta</h5>
+            <span class="mobile-text">Digite seu e-mail para o envio do código de verificação <b class="text-danger">usuário/admin</b></span>
+
+            <span class="mobile-text">enviaremos um formulário de redefinição de senha para você </span>
+
+           
+            <div class="d-flex flex-row mt-5"><input type="text" placeholder="Digite seu e-mail de validação" class="form-control" autofocus="">
+            </div>
+            <br>
+<div> 
+            <a href="verific.html" button type="button" class="btn btn-primary"  onclick="myFunction()">Enviar</button>
+                <br>
+                <br>
+                
+            <p id="demo">clique no botão de enviar</p>
+            <br>
+              
+            <a href="redefin.html" class="font-weight-bold text-danger cursor">Reenviar</span> 
+        </div>
+    </div>
+
+
+
+<!--scripts-->
+
+<!--script de envio -->
+
+<script>
+    function myFunction(){
+
+        document.getElementById("demo").innerHTML = "enviado com sucesso.";
+
+        window.alert("Enviamos um código de confirmação para seu e-mail.")
+
+    }
+</script>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>

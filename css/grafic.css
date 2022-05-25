@@ -1,0 +1,77 @@
+body{
+
+    background-color: #d03e35;
+}
+
+.button
+        {
+            border: none;
+            background: #e05750;
+            padding: 0px;
+            height: 35px;
+            min-width: 100px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #FFF;
+            font-family: sans-serif;
+            font-weight: bold;
+            padding-left: 10px;
+            padding-right: 10px;
+            outline: none;
+        }
+
+            .button:hover
+            {
+                opacity: 0.8;
+            }
+        .divbaseComparer
+        {
+            position: relative;
+            /*left: 50px;*/
+            top: 10px;
+            border-bottom: 1px solid #000;
+            border-left: 1px solid #000;
+            width: 540px;
+            height: 300px;
+            display: inline-block;
+            /*box-shadow: 0px 24px 9px 3px #000;*/
+        }
+
+        .divMedicao
+        {
+            width: 70px;
+            position: absolute;
+            display: inline-block;
+            bottom: 0px;
+        }
+
+            .divMedicao span
+            {
+                position: absolute;
+                width: 70px;
+                text-align: center;
+                top: -20px;
+                font-family: sans-serif;
+                font-weight: bold;
+            }
+
+        .divDescricao
+        {
+            position: relative;
+            left: 4px;
+            width: 500px;
+            height: 50px;
+            color: #000;
+        }
+
+        .spanDescricao
+        {
+            min-width: 70px;
+            position: absolute;
+            display: inline-block;
+            top: 12px;
+            font-family: sans-serif;
+            font-weight: bold;
+            text-align: center;
+            font-size: 10px;
+        }

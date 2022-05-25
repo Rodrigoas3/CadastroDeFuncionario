@@ -1,0 +1,136 @@
+<html>
+<head>
+
+    <link rel="stylesheet" href="css/grafic.css">
+    
+
+	<script type="text/javascript" src='https://code.jquery.com/jquery-1.10.2.min.js'></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#Grafic').GeradorGrafico('#Grafic',
+                {
+                    nomeItens: 'USUÁRIOS,MULHERES,HOMENS,ADMINISTRADORES',
+                    botaoGerador: '#GerarRelatorio',
+                    textBoxValoresID: '#txtVisualizadas,#txtFinalizada,#txtRealizada',
+                    textBoxValorTotalID: '#txtQtdaTotal'
+                });
+        });
+    </script>
+</head>
+<body>
+<div id="Grafic">
+        </div>
+        <span>Usuários</span>
+        <input type='text' ID="txtQtdaTotal" ></asp:TextBox>
+        <span>Administradores</span>
+        <input type='text' ID="txtVisualizadas"></asp:TextBox>
+        <span>Mulheres</span>
+        <input type='text' ID="txtFinalizada" ></asp:TextBox>
+        <span>Homens</span>
+        <input type='text' ID="txtRealizada" ></asp:TextBox>
+        <input type="button" value="GERAR RELATÓRIO" class="button" id="GerarRelatorio" />
+
+
+        
+        <!--scripts-->
+
+
+<script>
+
+
+    //Função responsável por gerar o grafico na tela
+
+(function ($) {
+    $.fn.GeradorGrafico = (function (seletor, setting) {
+        return this.each(function () {
+
+            //Propriedades
+            var config = {
+                'nomeItens': '',
+                'botaoGerador': '',
+                'textBoxValoresID': '',
+                'textBoxValorTotalID': ''
+            };
+
+            if (setting) { $.extend(config, setting); }
+
+            //separa os itens que irão servir de coluna em um array.
+            var _arrayItens = config.nomeItens.split(',');
+
+            //Range de cores das colunas de valores.
+            var _rangeCores = new Array('#00c6bd', '#ff4980', '#a7a4a4', '#0a22de', '#684a92', '#99f893', '#ff6b4f', '#800080', '#4e4747', '#440000');
+
+            //Adiciona a div que ira representar o corpo grafico.
+            $(seletor).append("<div id='divContainerItensGrafico' class='divbaseComparer'></div>");
+
+            //Adiciona os elementos a divContainerItensGrafico
+            var _distancia = 10;
+            for (var i = 0; i < _arrayItens.length; i++) {
+                var _nomeItem = _arrayItens[i];
+                _distancia = (i == 0) ? _distancia : _distancia + 90;
+
+                $('#divContainerItensGrafico').append("<div id='" + _nomeItem + "' class='divMedicao' style='background-color: "+_rangeCores[i]+"; left: " + _distancia + "px;'></div>");
+
+                //Adiciona o span de representacao numerica.
+                $('#' + _nomeItem).append("<span id='span" + _nomeItem + "' style='color: " + _rangeCores[i] + ";'>0%</span>");
+            }
+
+            //Adiciona a div responsável por exibir o nome das colunas
+            $(seletor).append("<div id='divContainerDescricao' class='divDescricao'></div>");
+
+            //Adiciona o span com o nome das colunas.
+            var _distanciaSpan = 10;
+            for (var i = 0; i < _arrayItens.length; i++) {
+
+                var _nomeItem = _arrayItens[i];
+                _distanciaSpan = (i == 0) ? _distanciaSpan : _distanciaSpan + 90;
+                $('#divContainerDescricao').append("<span class='spanDescricao' style='left: " + _distanciaSpan + "px'>" + _nomeItem + "</span>");
+            }
+
+            //Pega os Valores passados por parametro.
+            var _arrayCampos = config.textBoxValoresID.split(',');
+
+            //Botao responsável por disparar a geração do relatorio
+            $(config.botaoGerador).click(function () {
+                var _ValorTotal = parseFloat($(config.textBoxValorTotalID).val());
+                var _TotalPendente = 0;
+
+                //Valida o valor total dos campos.
+                var _valorTotalCampos = 0;
+                for (var i = 0; i < _arrayCampos.length; i++) {
+                    _valorTotalCampos = _valorTotalCampos + parseFloat($(_arrayCampos[i]).val());
+                }
+                if (_valorTotalCampos > _ValorTotal) {
+                    alert('A quantidade de usuários cadastrados devem ser maiores que a quantidade de administradores. Favor verificar!');
+                    return;
+                }
+
+                //Passa fazendo o get e set os valores para cada campo do grafico
+                for (var i = 0; i < _arrayCampos.length; i++) {
+                    var _valorCampo = parseFloat($(_arrayCampos[i]).val());
+                    var _percentual = (_valorCampo * 100) / _ValorTotal;
+
+                    $('#' + _arrayItens[i]).animate({ height: _percentual + '%' }, 1500);
+                    //seta o valor do span
+                    $('#span' + _arrayItens[i])[0].innerHTML = String(_percentual).substr(0,4) + '%';
+
+                    _TotalPendente = parseFloat(_TotalPendente) + parseFloat(_valorCampo);
+                }
+ 
+                
+                //Pendente
+                var _pendente = ((_ValorTotal - _TotalPendente) * 100) / _ValorTotal;
+                $('#' + _arrayItens[_arrayCampos.length]).animate({ height: _pendente + '%' }, 1500);
+                //seta o valor do span
+                $('#span' + _arrayItens[_arrayCampos.length])[0].innerHTML = String(_pendente).substr(0, 4) + '%';
+            });
+        });
+    });
+})(jQuery);
+
+</script>
+
+
+
+</body>
+</html>

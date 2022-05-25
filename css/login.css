@@ -58,3 +58,28 @@ input{
     border:solid 1px;
     border-radius:0px 20px 0px 20px
 }
+
+.linkcor{
+    color: #1877f2;
+}
+
+/* css do redefin */ 
+
+body{
+
+
+background-color: #d03e35 !important; 
+
+}
+
+.btn-primary{
+    height: 39px;
+    width:80px;
+    background-color: #d03e35!important;
+    border-color: #d03e35!important;
+}
+
+
+#demo{
+    color:black;
+}
